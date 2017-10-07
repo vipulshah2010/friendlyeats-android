@@ -1,19 +1,19 @@
 /**
  * Copyright 2017 Google Inc. All Rights Reserved.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.fireeats;
+package com.google.firebase.example.fireeats;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -37,27 +37,15 @@ import butterknife.OnClick;
 public class FilterDialogFragment extends DialogFragment {
 
     public static final String TAG = "FilterDialog";
-
-    interface FilterListener {
-
-        void onFilter(Filters filters);
-
-    }
-
-    private View mRootView;
-
     @BindView(R.id.spinner_category)
     Spinner mCategorySpinner;
-
     @BindView(R.id.spinner_city)
     Spinner mCitySpinner;
-
     @BindView(R.id.spinner_sort)
     Spinner mSortSpinner;
-
     @BindView(R.id.spinner_price)
     Spinner mPriceSpinner;
-
+    private View mRootView;
     private FilterListener mFilterListener;
 
     @Nullable
@@ -140,9 +128,11 @@ public class FilterDialogFragment extends DialogFragment {
         String selected = (String) mSortSpinner.getSelectedItem();
         if (getString(R.string.sort_by_rating).equals(selected)) {
             return Restaurant.FIELD_AVG_RATING;
-        } if (getString(R.string.sort_by_price).equals(selected)) {
+        }
+        if (getString(R.string.sort_by_price).equals(selected)) {
             return Restaurant.FIELD_PRICE;
-        } if (getString(R.string.sort_by_popularity).equals(selected)) {
+        }
+        if (getString(R.string.sort_by_popularity).equals(selected)) {
             return Restaurant.FIELD_POPULARITY;
         }
 
@@ -154,9 +144,11 @@ public class FilterDialogFragment extends DialogFragment {
         String selected = (String) mSortSpinner.getSelectedItem();
         if (getString(R.string.sort_by_rating).equals(selected)) {
             return Query.Direction.DESCENDING;
-        } if (getString(R.string.sort_by_price).equals(selected)) {
+        }
+        if (getString(R.string.sort_by_price).equals(selected)) {
             return Query.Direction.ASCENDING;
-        } if (getString(R.string.sort_by_popularity).equals(selected)) {
+        }
+        if (getString(R.string.sort_by_popularity).equals(selected)) {
             return Query.Direction.DESCENDING;
         }
 
@@ -184,5 +176,11 @@ public class FilterDialogFragment extends DialogFragment {
         }
 
         return filters;
+    }
+
+    interface FilterListener {
+
+        void onFilter(Filters filters);
+
     }
 }
